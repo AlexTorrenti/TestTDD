@@ -1,20 +1,27 @@
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
+
+// Validador de Password
+// Método estático (recibe String password)
+// >= de 6 caracteres y <= de 12
+// Debe contener una mayúscula
+// Debe contener un número
+
+
 
 public class Lista<E> implements List<E> {
     private Object[] lista_interna = {};
 
 
+
+
     @Override
     public int size() {
-        return 0;
+        return lista_interna.length;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return lista_interna.length == 0;
     }
 
     @Override
@@ -37,9 +44,13 @@ public class Lista<E> implements List<E> {
         return null;
     }
 
+
     @Override
-    public boolean add(E e) {
-        return false;
+    public boolean add(E element) {
+        Object[] temp = Arrays.copyOf(lista_interna, lista_interna.length + 1);
+        temp[lista_interna.length] = element;
+        lista_interna = temp;
+        return true;
     }
 
     @Override
@@ -79,7 +90,7 @@ public class Lista<E> implements List<E> {
 
     @Override
     public E get(int index) {
-        return null;
+        return (E) lista_interna[index];
     }
 
     @Override
